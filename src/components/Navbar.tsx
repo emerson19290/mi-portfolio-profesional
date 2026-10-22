@@ -2,9 +2,9 @@ import React from 'react';
 
 interface NavbarProps {
   studentName: string;
-  onOpenCustomizer: () => void;
-  onOpenPublishGuide: () => void;
-  onShare: () => void;
+  onOpenCustomizer?: () => void;
+  onOpenPublishGuide?: () => void;
+  onShare?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
