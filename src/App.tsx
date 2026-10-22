@@ -15,15 +15,33 @@ const STORAGE_KEY = 'daw_academic_portfolio_v2';
 export default function App() {
   const [data, setData] = useState<PortfolioData>(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
+      const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('daw_academic_portfolio_v1');
       if (saved) {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        if (parsed?.personalInfo?.name && parsed.personalInfo.name !== "[Tu Nombre y Apellidos]") {
+          return parsed;
+        }
       }
     } catch (e) {
       console.warn('Error reading from localStorage', e);
     }
     return initialPortfolioData;
   });
+
+  useEffect(() => {
+    try {
+      const v2 = localStorage.getItem('daw_academic_portfolio_v2');
+      const v1 = localStorage.getItem('daw_academic_portfolio_v1');
+      const raw = v2 || v1;
+      if (raw) {
+        fetch('/api/sync-state', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: raw
+        }).catch(() => {});
+      }
+    } catch (e) {}
+  }, []);
 
   const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
   const [isPublishGuideOpen, setIsPublishGuideOpen] = useState(false);

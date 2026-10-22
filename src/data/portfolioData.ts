@@ -74,14 +74,14 @@ export interface PortfolioData {
 
 export const initialPortfolioData: PortfolioData = {
   personalInfo: {
-    name: "[Tu Nombre y Apellidos]",
+    name: "Emerson Rodríguez",
     subtitle: "Estudiante de Desarrollo de Aplicaciones Web (DAW)",
-    institute: "IES Tecnológico / Centro Educativo",
+    institute: "DigiTech FP",
     course: "2º Curso (Curso Académico 2025 - 2026)",
     location: "España (Disponible para trabajo presencial o remoto)",
-    email: "estudiante.daw@ejemplo.es",
-    github: "https://github.com/tu-usuario-daw",
-    linkedin: "https://linkedin.com/in/tu-perfil-estudiante",
+    email: "emersongeovannyescob@gmail.com",
+    github: "https://github.com/emerson19290/mi-portfolio-profesional",
+    linkedin: "https://linkedin.com/in/emerson-rodriguez",
     fctAvailability: "Marzo - Junio 2026 (Horario de mañanas o jornada completa)",
     fctModality: "Presencial / Híbrida / Remota",
     fctHours: "370 - 400 horas de prácticas curriculares (FCT)",
@@ -111,13 +111,13 @@ export const initialPortfolioData: PortfolioData = {
         "Panel de administración protegido con control estricto de sesiones y tokens CSRF."
       ],
       technologies: ["PHP 8", "MySQL", "PDO", "CSS3 / Flexbox", "Apache"],
-      githubUrl: "https://github.com/ejemplo/tienda-mvc-php",
+      githubUrl: "https://github.com/emerson19290/tienda-mvc-php",
       demoUrl: "https://ejemplo-tienda-demo.vercel.app",
       docsUrl: "https://drive.google.com/ejemplo-memoria-tienda",
       date: "Noviembre 2025",
       status: "Completado",
       grade: "9.5 / 10",
-      isDemo: true
+      isDemo: false
     },
     {
       id: "proj-2",
@@ -133,13 +133,13 @@ export const initialPortfolioData: PortfolioData = {
         "Persistencia local offline y sincronización opcional con endpoint MockAPI."
       ],
       technologies: ["JavaScript ES6+", "HTML5 Semántico", "CSS Grid & Variables", "Fetch API", "LocalStorage"],
-      githubUrl: "https://github.com/ejemplo/gestor-incidencias-dwec",
+      githubUrl: "https://github.com/emerson19290/gestor-incidencias-dwec",
       demoUrl: "https://ejemplo-incidencias.netlify.app",
-      docsUrl: "https://github.com/ejemplo/gestor-incidencias-dwec#readme",
+      docsUrl: "https://github.com/emerson19290/gestor-incidencias-dwec#readme",
       date: "Enero 2026",
       status: "Completado",
       grade: "10 / 10",
-      isDemo: true
+      isDemo: false
     },
     {
       id: "proj-3",
@@ -155,12 +155,12 @@ export const initialPortfolioData: PortfolioData = {
         "Colección exportada de pruebas en Postman para verificación por el profesorado."
       ],
       technologies: ["Java 17", "Spring Boot", "JPA / Hibernate", "PostgreSQL", "Swagger", "Postman"],
-      githubUrl: "https://github.com/ejemplo/api-aulas-springboot",
+      githubUrl: "https://github.com/emerson19290/api-aulas-springboot",
       docsUrl: "https://documenter.getpostman.com/ejemplo-api-aulas",
       date: "Febrero 2026",
       status: "Completado",
       grade: "9.0 / 10",
-      isDemo: true
+      isDemo: false
     },
     {
       id: "proj-4",
@@ -176,13 +176,13 @@ export const initialPortfolioData: PortfolioData = {
         "Exportación de guía de estilos con paleta de colores, tipografías y componentes UI."
       ],
       technologies: ["Figma", "HTML5 Accesible (ARIA)", "CSS Moderno", "Tailwind CSS", "Lighthouse (100% Accesibilidad)"],
-      githubUrl: "https://github.com/ejemplo/portal-diw-accesible",
+      githubUrl: "https://github.com/emerson19290/portal-diw-accesible",
       demoUrl: "https://ejemplo-portal-diw.vercel.app",
       docsUrl: "https://drive.google.com/ejemplo-guia-estilos-figma",
       date: "Octubre 2025",
       status: "Completado",
       grade: "9.8 / 10",
-      isDemo: true
+      isDemo: false
     },
     {
       id: "proj-5",
@@ -198,12 +198,12 @@ export const initialPortfolioData: PortfolioData = {
         "Manual de despliegue paso a paso para ejecutar el entorno en cualquier servidor VPS."
       ],
       technologies: ["Docker", "Docker Compose", "Nginx", "Linux (Ubuntu Server)", "Bash Scripting", "MariaDB"],
-      githubUrl: "https://github.com/ejemplo/docker-lemp-stack-daw",
-      docsUrl: "https://github.com/ejemplo/docker-lemp-stack-daw/blob/main/DOCUMENTACION.md",
+      githubUrl: "https://github.com/emerson19290/docker-lemp-stack-daw",
+      docsUrl: "https://github.com/emerson19290/docker-lemp-stack-daw/blob/main/DOCUMENTACION.md",
       date: "Diciembre 2025",
       status: "Completado",
       grade: "10 / 10",
-      isDemo: true
+      isDemo: false
     }
   ],
   documents: [
@@ -215,7 +215,7 @@ export const initialPortfolioData: PortfolioData = {
       fileType: "PDF",
       externalUrl: "https://drive.google.com/ejemplo-tu-cv-daw.pdf",
       lastUpdated: "Febrero 2026",
-      isDemo: true
+      isDemo: false
     },
     {
       id: "doc-2",
@@ -225,7 +225,7 @@ export const initialPortfolioData: PortfolioData = {
       fileType: "Drive",
       externalUrl: "https://drive.google.com/ejemplo-memoria-tienda-mvc",
       lastUpdated: "Noviembre 2025",
-      isDemo: true
+      isDemo: false
     },
     {
       id: "doc-3",
@@ -233,9 +233,9 @@ export const initialPortfolioData: PortfolioData = {
       category: "Bases de Datos & SQL",
       description: "Modelo conceptual y lógico de base de datos relacional en Chen y Crow's Foot, normalización hasta 3FN y script SQL con triggers e índices optimizados.",
       fileType: "GitHub",
-      externalUrl: "https://github.com/ejemplo/bbdd-practica-sql",
+      externalUrl: "https://github.com/emerson19290/bbdd-practica-sql",
       lastUpdated: "Enero 2026",
-      isDemo: true
+      isDemo: false
     },
     {
       id: "doc-4",
@@ -245,7 +245,7 @@ export const initialPortfolioData: PortfolioData = {
       fileType: "Notion",
       externalUrl: "https://notion.so/ejemplo-guia-despliegue-vps",
       lastUpdated: "Diciembre 2025",
-      isDemo: true
+      isDemo: false
     },
     {
       id: "doc-5",
@@ -255,7 +255,7 @@ export const initialPortfolioData: PortfolioData = {
       fileType: "PDF",
       externalUrl: "https://drive.google.com/ejemplo-certificado-git.pdf",
       lastUpdated: "Septiembre 2025",
-      isDemo: true
+      isDemo: false
     }
   ],
   technologies: [

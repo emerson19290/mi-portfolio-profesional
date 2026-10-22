@@ -1,6 +1,6 @@
 {
-  "name": "Portafolio Académico DAW",
-  "description": "Portafolio académico y repositorio de prácticas de Desarrollo de Aplicaciones Web (DAW) para departamento de formación y prácticas.",
+  "name": "Portafolio Académico DAW - Emerson Rodríguez",
+  "description": "Portafolio académico y repositorio de proyectos de Desarrollo de Aplicaciones Web (DAW) de Emerson Rodríguez.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
