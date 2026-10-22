@@ -1,0 +1,6 @@
+{
+  "name": "Portafolio Académico DAW",
+  "description": "Portafolio académico y repositorio de prácticas de Desarrollo de Aplicaciones Web (DAW) para departamento de formación y prácticas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
