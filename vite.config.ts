@@ -1,42 +1,14 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import fs from 'fs';
 import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    plugins: [
-      react(),
-      tailwindcss(),
-      {
-        name: 'sync-state-plugin',
-        configureServer(server) {
-          server.middlewares.use('/api/sync-state', (req, res) => {
-            if (req.method === 'POST') {
-              let body = '';
-              req.on('data', chunk => body += chunk);
-              req.on('end', () => {
-                try {
-                  fs.writeFileSync(path.resolve(__dirname, 'src/data/persisted_browser_state.json'), body);
-                  res.setHeader('Content-Type', 'application/json');
-                  res.end(JSON.stringify({ ok: true }));
-                } catch (e) {
-                  res.statusCode = 500;
-                  res.end(JSON.stringify({ error: String(e) }));
-                }
-              });
-              return;
-            }
-            res.statusCode = 404;
-            res.end();
-          });
-        }
-      }
-    ],
+    plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(import.meta.dirname, '.'),
       },
     },
     server: {

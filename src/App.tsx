@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { initialPortfolioData, PortfolioData } from './data/portfolioData';
+import React, { useState } from 'react';
+import { portfolioData } from './data/portfolioData';
 import { Navbar } from './components/Navbar';
 import { HeaderSection } from './components/HeaderSection';
 import { AboutSection } from './components/AboutSection';
@@ -7,43 +7,9 @@ import { ProjectsSection } from './components/ProjectsSection';
 import { TechSection } from './components/TechSection';
 import { DocsSection } from './components/DocsSection';
 import { PublishGuideModal } from './components/PublishGuideModal';
-import { CustomizerModal } from './components/CustomizerModal';
-import { Check, Share2, HelpCircle, ArrowUp } from 'lucide-react';
-
-const STORAGE_KEY = 'daw_academic_portfolio_v2';
+import { Check, ArrowUp } from 'lucide-react';
 
 export default function App() {
-  const [data, setData] = useState<PortfolioData>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('daw_academic_portfolio_v1');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed?.personalInfo?.name && parsed.personalInfo.name !== "[Tu Nombre y Apellidos]") {
-          return parsed;
-        }
-      }
-    } catch (e) {
-      console.warn('Error reading from localStorage', e);
-    }
-    return initialPortfolioData;
-  });
-
-  useEffect(() => {
-    try {
-      const v2 = localStorage.getItem('daw_academic_portfolio_v2');
-      const v1 = localStorage.getItem('daw_academic_portfolio_v1');
-      const raw = v2 || v1;
-      if (raw) {
-        fetch('/api/sync-state', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: raw
-        }).catch(() => {});
-      }
-    } catch (e) {}
-  }, []);
-
-  const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
   const [isPublishGuideOpen, setIsPublishGuideOpen] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
@@ -52,8 +18,8 @@ export default function App() {
   const handleShare = async () => {
     const url = window.location.href;
     const shareData = {
-      title: `Portafolio Académico DAW - ${data.personalInfo.name}`,
-      text: `Portafolio de proyectos y prácticas de Desarrollo de Aplicaciones Web (DAW) de ${data.personalInfo.name}`,
+      title: `Portafolio Académico DAW - ${portfolioData.personalInfo.name}`,
+      text: `Portafolio de proyectos y prácticas de Desarrollo de Aplicaciones Web (DAW) de ${portfolioData.personalInfo.name}`,
       url: url
     };
 
@@ -78,69 +44,31 @@ export default function App() {
     }
   };
 
-  // Save new customized data to state and localStorage
-  const handleSaveData = (newData: PortfolioData) => {
-    setData(newData);
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
-      setToastMessage('Cambios guardados correctamente en tu navegador');
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 2500);
-    } catch (e) {
-      console.error('Error saving to localStorage', e);
-    }
-  };
-
-  // Reset to initial demo data
-  const handleResetData = () => {
-    if (window.confirm('¿Seguro que deseas restablecer los datos a los valores de ejemplo originales?')) {
-      setData(initialPortfolioData);
-      try {
-        localStorage.removeItem(STORAGE_KEY);
-      } catch (e) {}
-      setIsCustomizerOpen(false);
-      setToastMessage('Datos restablecidos a los valores originales');
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 2500);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white text-[#37352F] flex flex-col font-sans">
       {/* Notion Top Navigation Bar */}
       <Navbar
-        studentName={data.personalInfo.name}
-        onOpenCustomizer={() => setIsCustomizerOpen(true)}
+        studentName={portfolioData.personalInfo.name}
         onOpenPublishGuide={() => setIsPublishGuideOpen(true)}
         onShare={handleShare}
       />
 
       {/* Main Notion Document Page Container */}
       <main className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 md:px-8 pt-5 pb-16">
-        {/* Header with Notion Cover, Icon, Title, Properties and Callout */}
-        <HeaderSection
-          info={data.personalInfo}
-          onOpenCustomizer={() => setIsCustomizerOpen(true)}
-          onOpenPublishGuide={() => setIsPublishGuideOpen(true)}
-        />
+        {/* Header with Notion Cover, Icon, Title and Properties */}
+        <HeaderSection info={portfolioData.personalInfo} />
 
         {/* Sobre Mí (About Me) with Notion Toggles */}
-        <AboutSection info={data.personalInfo} />
+        <AboutSection info={portfolioData.personalInfo} />
 
         {/* Proyectos y Prácticas with Gallery / Table Switcher & Filter */}
-        <ProjectsSection projects={data.projects} />
+        <ProjectsSection projects={portfolioData.projects} />
 
         {/* Tecnologías y Herramientas */}
-        <TechSection
-          technologies={data.technologies}
-          onOpenCustomizer={() => setIsCustomizerOpen(true)}
-        />
+        <TechSection technologies={portfolioData.technologies} />
 
         {/* Documentación y Archivos */}
-        <DocsSection
-          documents={data.documents}
-          onOpenCustomizer={() => setIsCustomizerOpen(true)}
-        />
+        <DocsSection documents={portfolioData.documents} />
       </main>
 
       {/* Notion Minimalist Footer */}
@@ -148,12 +76,12 @@ export default function App() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="font-semibold text-[#37352F]">
-              {data.personalInfo.name}
+              {portfolioData.personalInfo.name}
             </span>
             <span>·</span>
             <span>FP Grado Superior DAW</span>
             <span>·</span>
-            <span>{data.personalInfo.course}</span>
+            <span>{portfolioData.personalInfo.course}</span>
           </div>
 
           <div className="flex items-center gap-4 text-xs">
@@ -162,13 +90,6 @@ export default function App() {
               className="hover:text-[#37352F] hover:underline cursor-pointer"
             >
               ¿Cómo publicar esta web gratis?
-            </button>
-            <span>·</span>
-            <button
-              onClick={() => setIsCustomizerOpen(true)}
-              className="hover:text-[#37352F] hover:underline cursor-pointer"
-            >
-              Personalizar datos
             </button>
             <span>·</span>
             <a
@@ -195,15 +116,6 @@ export default function App() {
       <PublishGuideModal
         isOpen={isPublishGuideOpen}
         onClose={() => setIsPublishGuideOpen(false)}
-      />
-
-      {/* Customizer Modal */}
-      <CustomizerModal
-        isOpen={isCustomizerOpen}
-        onClose={() => setIsCustomizerOpen(false)}
-        data={data}
-        onSave={handleSaveData}
-        onReset={handleResetData}
       />
     </div>
   );

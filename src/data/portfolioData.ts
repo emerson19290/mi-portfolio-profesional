@@ -72,7 +72,7 @@ export interface PortfolioData {
   technologies: TechCategory[];
 }
 
-export const initialPortfolioData: PortfolioData = {
+export const portfolioData: PortfolioData = {
   personalInfo: {
     name: "Emerson Rodríguez",
     subtitle: "Estudiante de Desarrollo de Aplicaciones Web (DAW)",
@@ -84,7 +84,7 @@ export const initialPortfolioData: PortfolioData = {
     linkedin: "https://linkedin.com/in/emerson-rodriguez",
     fctAvailability: "Marzo - Junio 2026 (Horario de mañanas o jornada completa)",
     fctModality: "Presencial / Híbrida / Remota",
-    fctHours: "370 - 400 horas de prácticas curriculares (FCT)",
+    fctHours: "370 - 400 horas de prácticas curriculares",
     aboutShort: "Estudiante de segundo curso de Desarrollo de Aplicaciones Web (DAW), con formación complementaria en marketing y experiencia en gestión administrativa, gestión de empleados, análisis de datos y atención al cliente. Cuento con conocimientos en HTML5, CSS, JavaScript, PHP, Java, APIs REST y bases de datos MySQL/PostgreSQL. Con capacidad analítica, adaptabilidad, organización y orientación a la resolución de problemas, y la mejora continua. Busco una oportunidad para aplicar mis conocimientos, adquirir experiencia en proyectos reales, aprender metodologías ágiles y seguir desarrollándome profesionalmente en el sector del desarrollo web, aportando valor al equipo.",
     aboutDetails: [],
     interests: [
@@ -303,3 +303,5 @@ export const initialPortfolioData: PortfolioData = {
     }
   ]
 };
+
+export const initialPortfolioData = portfolioData;

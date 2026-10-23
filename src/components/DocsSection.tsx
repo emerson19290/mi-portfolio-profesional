@@ -13,10 +13,10 @@ import {
 
 interface DocsSectionProps {
   documents: AcademicDoc[];
-  onOpenCustomizer: () => void;
+  onOpenCustomizer?: () => void;
 }
 
-export const DocsSection: React.FC<DocsSectionProps> = ({ documents, onOpenCustomizer }) => {
+export const DocsSection: React.FC<DocsSectionProps> = ({ documents }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
 
   const categories = [
@@ -48,24 +48,15 @@ export const DocsSection: React.FC<DocsSectionProps> = ({ documents, onOpenCusto
 
   return (
     <section id="documentos" className="mb-12 scroll-mt-16">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-        <div>
-          <div className="flex items-center gap-2">
-            <h2 className="text-lg font-bold text-[#37352F] tracking-tight">
-              Documentación y archivos
-            </h2>
-          </div>
-          <p className="text-xs text-[#787774] mt-0.5">
-            Archivos externos enlazados a Google Drive, GitHub y repositorios oficiales del centro.
-          </p>
+      <div className="mb-3">
+        <div className="flex items-center gap-2">
+          <h2 className="text-lg font-bold text-[#37352F] tracking-tight">
+            Documentación y archivos
+          </h2>
         </div>
-
-        <button
-          onClick={onOpenCustomizer}
-          className="no-print text-xs font-medium text-[#787774] hover:text-[#37352F] hover:underline cursor-pointer self-start sm:self-auto"
-        >
-          + Añadir documento
-        </button>
+        <p className="text-xs text-[#787774] mt-0.5">
+          Archivos externos enlazados a Google Drive, GitHub y repositorios oficiales del centro.
+        </p>
       </div>
 
       {/* Categories Filter */}

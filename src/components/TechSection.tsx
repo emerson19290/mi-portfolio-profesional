@@ -4,10 +4,10 @@ import { Code2, Server, Database, Wrench, Layers } from 'lucide-react';
 
 interface TechSectionProps {
   technologies: TechCategory[];
-  onOpenCustomizer: () => void;
+  onOpenCustomizer?: () => void;
 }
 
-export const TechSection: React.FC<TechSectionProps> = ({ technologies, onOpenCustomizer }) => {
+export const TechSection: React.FC<TechSectionProps> = ({ technologies }) => {
   const getCategoryIcon = (index: number) => {
     switch (index) {
       case 0:
@@ -24,24 +24,15 @@ export const TechSection: React.FC<TechSectionProps> = ({ technologies, onOpenCu
 
   return (
     <section id="tecnologias" className="mb-12 scroll-mt-16">
-      <div className="flex items-center justify-between gap-3 mb-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <h2 className="text-lg font-bold text-[#37352F] tracking-tight">
-              Tecnologías y herramientas
-            </h2>
-          </div>
-          <p className="text-xs text-[#787774] mt-0.5">
-            Lenguajes de programación, frameworks, motores de bases de datos y herramientas dominadas.
-          </p>
+      <div className="mb-4">
+        <div className="flex items-center gap-2">
+          <h2 className="text-lg font-bold text-[#37352F] tracking-tight">
+            Tecnologías y herramientas
+          </h2>
         </div>
-
-        <button
-          onClick={onOpenCustomizer}
-          className="no-print text-xs font-medium text-[#787774] hover:text-[#37352F] hover:underline cursor-pointer self-start sm:self-auto"
-        >
-          + Añadir o editar
-        </button>
+        <p className="text-xs text-[#787774] mt-0.5">
+          Lenguajes de programación, frameworks, motores de bases de datos y herramientas dominadas.
+        </p>
       </div>
 
       {/* Grid of 4 Categories */}
